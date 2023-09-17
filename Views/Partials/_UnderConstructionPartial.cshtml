@@ -1,0 +1,19 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@using Umbraco.Cms.Core.Models
+
+
+
+    @{
+        var underConstructionImage = Model.Value<MediaWithCrops>("underConstructionImage");
+        
+        
+        if (underConstructionImage != null)
+        {
+        
+            <img src="@underConstructionImage.MediaUrl()" alt="@Model.Value("pageSettingsTitle")" style="width:100vw; height: 85vh;" />
+        
+        }
+        
+
+    }
+    

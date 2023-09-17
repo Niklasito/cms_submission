@@ -1,0 +1,22 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Core.Models.Blocks;
+@using Umbraco.Cms.Core.Models
+@{
+    var content = (ContentModels.StaffMembers)Model.Content;
+    //var settings = (ContentModels.MyElementTypeAliasOfSettings)Model.Settings;
+}
+
+<div class="col-3 team-members">
+       @{
+        var staffMemberImage = content.Value<MediaWithCrops>("staffMemberImage");
+        if (staffMemberImage != null)
+        {
+            <img src="@staffMemberImage.MediaUrl()" alt="@staffMemberImage.Value("alt")"  />
+        }
+        }
+    <h6>@content.Value("staffName")</h6>
+    <p>@content.Value("staffMemberRole")</p>
+</div>
+

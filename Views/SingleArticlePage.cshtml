@@ -1,0 +1,73 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@using Umbraco.Cms.Core.Services;
+@using Umbraco.Cms.Core.Models.PublishedContent;
+@inject IUserService UserService;
+@{
+	Layout = "_PageWithBreadcrumb.cshtml";
+	var userService = UserService;
+	var image = Model.Value<IPublishedContent>("articleImage");
+	ViewData["PageTitle"] = "News & Articles";
+	
+}
+
+ <section class="single-article-section">
+
+        <div class="container article-heading-container">
+            <div class="article-heading">
+                <h2>@Model.Name</h2>
+            </div>
+            <div class="article-small-heading-text">
+                <p>@Model.CreateDate.ToString("MMM dd, yyyy")<i class="fa fa-dot-circle-o" style="color: yellow;"></i> <span>@Model.Value("articleCategory")</span><i class="fa fa-dot-circle-o" style="color: yellow;"></i>@Model.CreatorName(UserService)</p>
+            </div>
+        </div>
+
+        <div class="container main-article-container">
+            <div class="col-8 main-article-holder">
+                <img src="@image.Url()" alt="">
+                
+                
+                @Model.Value("articleContent")
+                
+                
+                
+                <div class="tags col-6 d-flex">
+                     @foreach(var articleTag in Model.Value<IEnumerable<string>>("articleTags"))
+                        {
+                        <span class="me-3" style="color: black; font-size: 11px; background-color: rgb(228, 228, 228); border-radius: 15px; padding: 10px; font-weight: 600;">@articleTag</span>
+                        }
+                </div>
+            </div>
+            <div class="col-2 sidebar-holder">
+                <input type="text" placeholder="Type to search...">
+                <div class="sidebar-box-first">
+                    <h5>Recent Posts</h5>
+                    <hr>
+                    <p>How To Blow Through Capital At An Incredible Rate</p>
+                    <p class="article-date">Jun 14, 2020</p>
+                    
+                    <p>Design Studios That Everyone Should Know About?</p>
+                    <p class="article-date">Jun 14, 2020</p>
+                    
+                   
+                    <p>How did we get 1M+ visitors in 30 days without anything</p>
+                    <p class="article-date">Jun 14, 2020</p>
+
+                    <p>Figma on Figma: How We Built Our Website Design System</p>
+                    <p class="article-date">Jun 14, 2020</p>
+                </div>
+                <div class="sidebar-box-second">
+                    <h5>Categories</h5>
+                    <hr>
+                    
+                    <p>Technology - <span>20 posts</span></p>
+                    <p>Freelancing - <span>07 posts</span></p>
+                    <p>Writing - <span>16 posts</span></p>
+                    <p>Marketing - <span>11 posts</span></p>
+                    <p>Business - <span>35 posts</span></p>
+                    <p>Education - <span>14 posts</span></p>
+                </div>
+            </div>
+        </div>
+
+    </section>

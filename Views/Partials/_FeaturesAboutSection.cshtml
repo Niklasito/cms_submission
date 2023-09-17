@@ -1,0 +1,90 @@
+﻿@using Umbraco.Cms.Core.Models
+
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+
+ <!-- Features and about section -->
+    <section class="features-about-section">
+        <div class="container">
+            <div class="logos">
+                                
+                    @{
+                        var brandImages = Model.Value<IEnumerable<MediaWithCrops>>("brandImages");
+                        foreach (var entry in brandImages)
+                        {
+                            <img src="@entry.MediaUrl()" />
+                        }
+                    }
+                        
+
+            </div>
+        </div>
+
+        <div class="container featuredcontainer">
+            <div class="col-12 col-md-5 features">
+                <p>Features</p>
+                <h2>@Model.Value("featuresTitle")</h2>
+                <a href="" class="">@Model.Value("featuresButtonText") <i class="fa fa-arrow-up-right"></i></a>
+            </div>
+            <div class="col-12 col-md-7 businesscontainer">
+                <div class="col-6 col-md-5">
+                    <div class="business">
+                        <i class="fa fa-handshake-o"></i>
+                        <h5>@Model.Value("featuresSubtitle1")</h5>
+                        <p>@Model.Value("featuresSubstring1")</p>
+                    </div>
+                    <div class="businessbottom">
+                        <i class="fa fa-lightbulb-o"></i>
+                        <h5>@Model.Value("featuresSubtitle2")</h5>
+                        <p>@Model.Value("featuresSubstring2")</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-5 businessholder">
+                    <div class="business">
+                        <i class="fa fa-chart-line"></i>
+                        <h5>@Model.Value("featuresSubtitle3")</h5>
+                        <p>@Model.Value("featuresSubstring3")</p>
+                    </div>
+                    <div class="businessbottom">
+                        <i class="fa fa-cube"></i>
+                        <h5>@Model.Value("featuresSubtitle4")</h5>
+                        <p>@Model.Value("featuresSubstring4")</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container aboutcontainer">
+            <div class="founderphotoholder col-4 col-md-4">
+                    @{
+                        var staffImage = Model.Value<MediaWithCrops>("staffImage");
+                        if (staffImage != null)
+                        {
+                            <img class="founderimage" src="@staffImage.MediaUrl()" alt="@staffImage.Value("alt")"  />
+                        }
+                    }
+                <div class="bluebox">
+                    <h5>@Model.Value("staffFullName")<p class="founderquote">,@Model.Value("staffJobTitle")</p>
+                    </h5>
+                    <p>@Model.Value("staffQuote")</p>
+                </div>
+            </div>
+            <div class="aboutcompanycontainer col-12 col-md-6">
+                <p class="aboutcompany">About Company</p>
+                <h3>We Are Business Consulting & Credit Repair Experts</h3>
+                <p class="aboutinfotext">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo numquam
+                    perferendis, nesciunt ullam
+                    illum aperiam soluta reiciendis eos perspiciatis, magni, consectetur voluptates.</p>
+                <p class="aboutinfotext">Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro omnis ipsam in
+                    fugit delectus eaque
+                    veritatis officiis adipisci?</p>
+                <div class="buttonholder">
+                    <a href="" class="btn-black">Learn more <i class="fa fa-arrow-up-right"></i></a>
+                    <i class="fa fa-play playbtn"></i>
+                    <span>Intro Video</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- Features and about section end -->
