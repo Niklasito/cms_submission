@@ -4,83 +4,8 @@
 @using Umbraco.Cms.Core.Models.PublishedContent;
 @{
     Layout = "_PageWithBreadcrumb.cshtml";
-
     ViewData["PageTitle"] = "News & Articles";
-    var itemsPerPage = 6;
-    var pageNumber = 1;
-
-    if (!int.TryParse(Context.Request.Query["page"], out pageNumber))
-        pageNumber = 1;
-
-    var selection = Umbraco?.Content(Guid.Parse("2dd4f636-2b9d-4287-8926-cccec8578e68"))?
-        .ChildrenOfType("singleArticlePage")?
-        .Where(x => x.IsVisible())
-        .OrderByDescending(x => x.CreateDate).ToList();
-
-    var totalItems = selection?.Count ?? 0;
-    var pagedItems = selection?.Skip((pageNumber - 1) * itemsPerPage).Take(itemsPerPage);
-
-   
     
 }
 
-
-<section class="article-news-section">
-        <div class="container">
-            <div class="row d-flex justify-content-between mt-5">
-                
-            @if(pagedItems != null)
-            {
-                foreach (var item in pagedItems)
-                {
-
-                    var url = item.Url();
-                    var date = item.CreateDate;
-                    var image = item.Value<IPublishedContent>("articleImage");
-                    var category = item.Value("articleCategory");
-                    var title = item.Name();
-                    var preamble = item.Value("articlePreamble");
-
-
-                    <div class="col-4 news-holder mt-5">
-                        <a class="article-link" href="@url" style="text-decoration: none; color: black;">
-                            <img src="@image?.Url()" alt="">
-                            <div class="d-flex">
-                                <p class="business-paragraph">@date.ToString("dd MMM yyyy")</p>
-                                <p class="business-paragraph mx-5">@category</p>
-                            </div>
-                            <h6 class="pe-5">@title</h6>
-                            <p class="news-info-text pe-5">@preamble</p>
-                        </a>
-                    </div>
-
-                }
-                
-            }               
-            
-            <nav class="item-pagination mt-5" aria-label="Page Navigation" style="text-decoration: none; color: black;">
-
-                @if(pageNumber >1)
-                {
-                    <a href="?page=@(pageNumber - 1)" class="item-link link-prev" aria-label="Previouis" style="text-decoration: none; color: black;">
-                        <span aria-hidden="true"><i class="fa-sharp fasolid fa-chevron-left"></i></span>
-                    </a>
-                }
-
-                @for(int i = 1; i <= Math.Ceiling((decimal)totalItems / itemsPerPage); i++)
-                {
-                    if(i == pageNumber){<a href="#" class="item-link active" style="text-decoration: none; color: black;">@i</a>}
-
-                    else{<a href="?page=@i" class="item-link" style="text-decoration: none; color: black;">@i</a>}
-                }
-     
-                @if (pageNumber < Math.Ceiling((decimal)totalItems / itemsPerPage)) 
-                {
-                    <a href="?page=@(pageNumber + 1)" class="item-link link-next" aria-label="Next" style="text-decoration: none; color: black;">
-                        <span aria-hidden="true"><i class="fa-sharp fasolid fa-chevron-right"></i></span>
-                    </a>
-                }
-            </nav>
-        </div>
-
-    </section>
+@await Html.PartialAsync("_ArticleAndNewsSlider")

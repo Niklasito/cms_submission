@@ -37,6 +37,8 @@
                         <span class="me-3" style="color: black; font-size: 11px; background-color: rgb(228, 228, 228); border-radius: 15px; padding: 10px; font-weight: 600;">@articleTag</span>
                         }
                 </div>
+                
+                
             </div>
             <div class="col-2 sidebar-holder">
                 <input type="text" placeholder="Type to search...">
@@ -69,5 +71,6 @@
                 </div>
             </div>
         </div>
+        @await Html.PartialAsync("_ArticlesAndNewsSection")
 
     </section>

@@ -1,0 +1,37 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Core.Models.Blocks;
+@using Umbraco.Cms.Core.Models
+@{
+    var content = (ContentModels.CustomerReviews)Model.Content;
+    
+}
+
+<div class="col-12 col-md-3 client-container">
+                    <div class="d-flex starholder">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <p class="client-quote">@content.Value("customerReviewText")</p>
+                    <div>
+                        <div class="row customerinfo">
+                            <div class="col-2">
+                               @{
+                                    var customerImage = content.Value<MediaWithCrops>("customerImage");
+                                    if (customerImage != null)
+                                    {
+                                        <img src="@customerImage.MediaUrl()" alt="@customerImage.Value("alt")"  />
+                                    }
+                                }
+                            </div>
+                            <div class="col-9 client-name">
+                                <h6>@content.Value("customerName")</h6>
+                                <p class="client-role">@content.Value("customerJobTitle"), @content.Value("customerCompany")</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>

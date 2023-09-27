@@ -1,4 +1,26 @@
-﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Core.Models.PublishedContent;
+
+
+
+@{
+
+    var itemsPerPage = 6;
+    var pageNumber = 1;
+
+    if (!int.TryParse(Context.Request.Query["page"], out pageNumber))
+        pageNumber = 1;
+
+	var selection = Umbraco.Content(Guid.Parse("2dd4f636-2b9d-4287-8926-cccec8578e68"))
+    .ChildrenOfType("singleArticlePage")
+    .Where(x => x.IsVisible())
+    .OrderByDescending(x => x.CreateDate);
+    
+    var visibleArticles = selection.Take(3);
+    
+}
 
 
     <!-- Article & News section -->
@@ -19,30 +41,34 @@
                 </div>
             </div>
             <div class="row d-flex justify-content-between mt-5">
-                <div class="col-12 col-md-3 news-holder">
-                    <img src="/images/linkedin-sales-solutions-Mis5fyJi7Q0-unsplash.jpg" alt="">
-                    <p class="business-paragraph">Business</p>
-                    <h6>How To Use Digitalization</h6>
-                    <h6>In The Classroom</h6>
-                    <p class="news-info-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, veniam
-                        possimus.</p>
-                </div>
-                <div class="col-12 col-md-3 news-holder">
-                    <img src="/images/emiliano-vittoriosi-vEN1bsdSjxM-unsplash.jpg" alt="">
-                    <p class="business-paragraph">Business</p>
-                    <h6>How To Implement ChatGPT</h6>
-                    <h6>In Your Projects</h6>
-                    <p class="news-info-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias,
-                        praesentium voluptate!</p>
-                </div>
-                <div class="col-12 col-md-3 news-holder">
-                    <img src="/images/kobu-agency-ipARHaxETRk-unsplash.jpg" alt="">
-                    <p class="business-paragraph">Business</p>
-                    <h6>The Guide To Support</h6>
-                    <h6>Modern CSS Design</h6>
-                    <p class="news-info-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, neque
-                        et?</p>
-                </div>
+                
+
+
+	@foreach (var item in visibleArticles)
+	{
+	    
+                    var url = item.Url();
+                    var date = item.CreateDate;
+                    var image = item.Value<IPublishedContent>("articleImage");
+                    var category = item.Value("articleCategory");
+                    var title = item.Name();
+                    var preamble = item.Value("articlePreamble");
+
+
+                    <div class="col-4 news-holder mt-5">
+                        <a class="article-link" href="@url" style="text-decoration: none; color: black;">
+                            <img src="@image?.Url()" alt="">
+                            <div class="d-flex">
+                                <p class="business-paragraph">@date.ToString("dd MMM yyyy")</p>
+                                <p class="business-paragraph mx-5">@category</p>
+                            </div>
+                            <h6 class="pe-5">@title</h6>
+                            <p class="news-info-text pe-5">@preamble</p>
+                        </a>
+                    </div>
+	}
+                
+            
             </div>
         </div>
 

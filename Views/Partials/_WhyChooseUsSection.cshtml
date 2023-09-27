@@ -1,111 +1,84 @@
-﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.HomePage>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Core.Models.Blocks;
+@using Umbraco.Cms.Core.Models
 
+@{
+	var selection = Umbraco.Content(Guid.Parse("086e62c9-7eee-4a53-acf3-441d84564f52"))
+    .ChildrenOfType("singleProjectPage")
+    .Where(x => x.IsVisible())
+    .OrderByDescending(x => x.CreateDate);
+}
 
   <!-- Why choose us & project section -->
 
-    <section class=choose-us>
-        <div class="container-fluid">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 col-md-4 consulting-tips-holder justify-content-center">
-                        <div>
-                            <p style="color:red;">Why Choose Us</p>
-                        </div>
-                        <div class="consulting-tips-heading mb-4">
-                            <h2>Why We Are The</h2>
-                            <h2>Best Business</h2>
-                            <h2>Consulting Agency</h2>
-                        </div>
-                        <div>
-                            <div class="consulting-tips">
-                                <i class="fa fa-thumbs-up"></i>
-                                <div>
-                                    <h5> Process Excellence</h5>
-                                    <p>Lorem ipsum dolor sit amet consectetur.</p>
-                                </div>
-                            </div>
-                            <div class="consulting-tips">
-                                <i class="fa fa-sliders"></i>
-                                <div>
-                                    <h5> Strategic Planning</h5>
-                                    <p>Lorem ipsum dolor sit amet consectetur.</p>
-                                </div>
-                            </div>
-                            <div class="consulting-tips">
-                                <i class="fa fa-pen-nib"></i>
-                                <div>
-                                    <h5>Experience Design</h5>
-                                    <p>Lorem ipsum dolor sit amet consectetur.</p>
-                                </div>
-                            </div>
-                            <div class="consulting-tips">
-                                <i class="fa fa-codepen"></i>
-                                <div>
-                                    <h5>Artificial Intelligence</h5>
-                                    <p>Lorem ipsum dolor sit amet consectetur.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-8 consulting-tips-image-holder">
-                        <img src="/images/amy-hirschi-K0c8ko3e6AA-unsplash.jpg" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container mt-5 projects-container">
-            <div class="col-12 headings-container">
-                <p>Project & Case Studies</p>
-                <h2>Let's Looks Our Global Projects</h2>
-            </div>
-            <div class="container businesses-container">
-                <div class="row d-flex justify-content-center">
-                    <div class="col-6 col-md-5 info-container">
-                        <img src="/images/adeolu-eletu-E7RLgUjjazc-unsplash.jpg" alt="">
-                        <h5>Grow your business</h5>
-                        <hr>
-                        <div class="d-flex justify-content-end">
-                            <a>Read More<i class="fa fa-arrow-up-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-5 info-container">
-                        <img src="/images/marek-levak-zANXcXyByos-unsplash.jpg" alt="">
-                        <h5>Why your clients need a responsive website</h5>
-                        <hr>
-                        <div class="d-flex justify-content-end">
-                            <a>Read More<i class="fa fa-arrow-up-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="container mt-5">
-                <div class="row d-flex justify-content-center">
-                    <div class="col-6 col-md-5 info-container">
-                        <img src="/images/oli-dale-xjSkI_seiZY-unsplash.jpg" alt="">
-                        <h5>Educate your employees to get better results</h5>
-                        <hr>
-                        <div class="d-flex justify-content-end">
-                            <a>Read More<i class="fa fa-arrow-up-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-5 col-md-5 info-container">
-                        <img src="/images/carlos-muza-hpjSkU2UYSU-unsplash.jpg" alt="">
-                        <h5>Business Insights is an important piece of your business</h5>
-                        <hr>
-                        <div class="d-flex justify-content-end">
-                            <a>Read More<i class="fa fa-arrow-up-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<section class=choose-us>
+    <div class="container-fluid">
+        <div class="container">
             <div class="row">
-                <div class="col-12 d-flex justify-content-center mt-5">
-                    <a href="#" class="btn-black">All Recent Projects <i class="fa fa-arrow-up-right"
-                            style="color:white;"></i></a>
+                <div class="col-12 col-md-4 consulting-tips-holder justify-content-center">
+                    <div>
+                        <p style="color:red;">@Model.Value("whyChoseUsTitle")</p>
+                    </div>
+                    <div class="consulting-tips-heading mb-4">
+                        <h2>@Model.Value("whyChooseUsHeading")</h2>
+                    </div>
+                    <div>
+                        @Html.GetBlockListHtml(Model.WhyChooseUs)
+                    </div>
+                </div>
+                <div class="col-12 col-md-8 consulting-tips-image-holder">
+                    @{
+                    var whyChooseUsImage = Model.Value<MediaWithCrops>("whyChooseUsImage");
+                    if (whyChooseUsImage != null)
+                    {
+                        <img src="@whyChooseUsImage.MediaUrl()" alt="@whyChooseUsImage.Value("alt")"  />
+                    }
+                    
+                    }
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+
+    <div class="container mt-5 projects-container">
+        <div class="col-12 headings-container">
+            <p>Project & Case Studies</p>
+            <h2>Let's Looks Our Global Projects</h2>
+        </div>
+        <div class="container mt-5 projects-container">
+    <div class="container businesses-container">
+        <div class="row d-flex justify-content-center">
+        	@foreach (var item in selection)
+            {
+                var url = item.Url();
+                var date = item.CreateDate;
+                var image = item.Value<IPublishedContent>("projectsImage");
+                var category = item.Value("projectsCategory");
+                var title = item.Name();
+                var preamble = item.Value("projectsPreamble");
+                            
+                <div class="col-6 col-md-5 info-container">
+                    <a href="@url" style="color: inherit; text-decoration: none;">
+                        <img src="@image?.Url()" alt="">
+                        <h5>@title</h5>
+                        <hr>
+                        <div class="d-flex justify-content-end mb-3">
+                            <a>Read More<i class="fa fa-arrow-up-right"></i></a>
+                        </div>
+                     </a>
+                </div>
+        	}
+        </div>
+    </div>    
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center mt-5 mb-5">
+                <a href="#" class="btn-black">All Recent Projects <i class="fa fa-arrow-up-right"
+                        style="color:white;"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
 
     <!-- choose us & projecgt section end -->

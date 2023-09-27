@@ -31,86 +31,20 @@
         <div class="container reviews-container">
             <div class="row">
                 <div class="col-12 reviews-small-heading">
-                    <p>Testimonal</p>
+                    <p>@Model.Value("customerReviewsTitle")</p>
                 </div>
                 <div class="col-12 reviews-big-heading">
-                    <h2>What Our Clients Say</h2>
+                    <h2>@Model.Value("customerReviewsHeading")</h2>
                 </div>
             </div>
             <div class="row d-flex justify-content-evenly">
-                <div class="col-12 col-md-3 client-container">
-                    <div class="d-flex starholder">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                    </div>
-                    <p class="client-quote">"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium
-                        debitis enim architecto cum
-                        quae, odit perferendis aspernatur voluptatum reiciendis quasi, amet quo temporibus."</p>
-                    <div>
-                        <div class="row customerinfo">
-                            <div class="col-2">
-                                <img src="/images/vince-veras-AJIqZDAUD7A-unsplash.jpg" alt="">
-                            </div>
-                            <div class="col-9 client-name">
-                                <h6>Cassandra Warren</h6>
-                                <p class="client-role">Business Manager, Dorfus</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-3 client-container">
-                    <div class="d-flex starholder">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                    </div>
-                    <p class="client-quote">"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium
-                        debitis enim architecto cum
-                        quae, odit perferendis aspernatur voluptatum reiciendis quasi, amet quo temporibus."</p>
-                    <div>
-                        <div class="row customerinfo">
-                            <div class="col-2">
-                                <img src="/images/christina-wocintechchat-com-PlikkWB79qs-unsplash.jpg" alt="">
-                            </div>
-                            <div class="col-9 client-name">
-                                <h6>Amanda Tulling</h6>
-                                <p class="client-role">Senior Developer, Square</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-3 client-container">
-                    <div class="d-flex starholder">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                    </div>
-                    <p class="client-quote">"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium
-                        debitis enim architecto cum
-                        quae, odit perferendis aspernatur voluptatum reiciendis quasi, amet quo temporibus."</p>
-                    <div>
-                        <div class="row customerinfo">
-                            <div class="col-2">
-                                <img src="/images/joseph-gonzalez-iFgRcqHznqg-unsplash.jpg" alt="">
-                            </div>
-                            <div class="col-9 client-name">
-                                <h6>Jack McDogglas</h6>
-                                <p class="client-role">Key Account Manager, Gobona</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
+                @Html.GetBlockListHtml(Model.CustomerReviews)
+                
             </div>
             <div class="row reviews-button">
                 <div class="col-12 d-flex mt-5 justify-content-center reviews-button-holder">
-                    <a class="btn-black">All Reviews <i class="fa fa-arrow-up-right"></i></a>
+                    <a href="@Model.Value("customerReviewsButtonUrl")"class="btn-black">@Model.Value("customerReviewsButtonText")<i class="fa fa-arrow-up-right"></i></a>
                 </div>
             </div>
         </div>

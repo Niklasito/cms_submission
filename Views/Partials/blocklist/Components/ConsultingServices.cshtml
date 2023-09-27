@@ -1,0 +1,22 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Core.Models.Blocks;
+@using Umbraco.Cms.Core.Models
+@{
+    var content = (ContentModels.ConsultingServices)Model.Content;
+    
+}
+
+
+<div class="col-6 col-md-2 business-box">
+    <hr>
+    <div class="mt-4 p-2" style: hover: background-color: #F9D783;>
+        <h4>@content.Value("consultingTitle")</h4>
+        <p>@content.Value("consultingDescription")
+        </p>
+    </div>
+    <div class="d-flex justify-content-end mt-2">
+        <a href="@content.Value("consultingIconUrl")"><i class="fa fa-arrow-right"></i></a>
+    </div>
+</div>
