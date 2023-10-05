@@ -10,7 +10,8 @@ login: niklas@domain.com
 password: BytMig123!
 
 
-![image](https://github.com/Niklasito/cms_submission/assets/110826266/b756427d-5ab6-41d7-97cf-3623a1d8e13b)
+![image](https://github.com/Niklasito/cms_submission/assets/110826266/5c82a2ae-3ce0-4a01-ab67-1c142603f008)
+
 
 Prenumerera på nyhetsbrev. När man fyller i sin e-post sparas den ner i databasen.
 ![image](https://github.com/Niklasito/cms_submission/assets/110826266/119f23c7-d6b0-44c1-b8c0-13c6a2bcd2d3)
