@@ -14,7 +14,4 @@ public class ContactEntity
 
     public string Message { get; set; } = null!;
 
-
-
-  
 }
