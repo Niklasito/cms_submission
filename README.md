@@ -14,29 +14,34 @@ password: BytMig123!
 
 
 Prenumerera på nyhetsbrev. När man fyller i sin e-post sparas den ner i databasen.
-![image](https://github.com/Niklasito/cms_submission/assets/110826266/119f23c7-d6b0-44c1-b8c0-13c6a2bcd2d3)
+![image](https://github.com/Niklasito/cms_submission/assets/110826266/1393a1df-d50a-4a07-8f86-f6764f89dd91)
 
 
 
 
 
-![image](https://github.com/Niklasito/cms_submission/assets/110826266/30e607c0-3a92-42e1-bf8b-d2691669488d)
+
+![image](https://github.com/Niklasito/cms_submission/assets/110826266/fa47b4a1-9371-46be-9124-11219c99c1b9)
 
 
 
 
 
-![image](https://github.com/Niklasito/cms_submission/assets/110826266/01be558e-ac10-46f6-a766-d7f7493fa9a5)
+
+![image](https://github.com/Niklasito/cms_submission/assets/110826266/3be09f35-d43f-4377-9560-81bbaa6b6ec0)
 
 
 
 
 
-![image](https://github.com/Niklasito/cms_submission/assets/110826266/74fcacc2-8f1c-4372-9e02-f71effeb43c6)
+
+
 
 
 
 
 Här ser man tabellerna i databasen. Filen finns tillgänglig i projektet om man vill kika in i den.
-![image](https://github.com/Niklasito/cms_submission/assets/110826266/856cf686-9975-47f9-a2a4-21e1434d2865)
-![image](https://github.com/Niklasito/cms_submission/assets/110826266/8525f3bf-45a8-4188-b018-10cc72184b3d)
+![image](https://github.com/Niklasito/cms_submission/assets/110826266/74c3a699-fc10-446f-92b3-1e8a60e4c84a)
+
+![image](https://github.com/Niklasito/cms_submission/assets/110826266/0b7e9e46-2b10-4a1c-a46b-a423e700863b)
+
