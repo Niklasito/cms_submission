@@ -1,5 +1,9 @@
-﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+﻿@using cms_submission.Models;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
 
+@{
+    var newsLetterForm = new cms_submission.Models.NewsLetterForm();
+}
 
     <!-- Newsletter Section -->
     <section class="newsletter-section">
@@ -8,8 +12,12 @@
                 <h2>Get News Updates By Signup</h2>
             </div>
             <div class="col-12 col-md-4 inputholder">
-                <input type="text" placeholder="username@domain.com">
-                <a class="btn-theme subscribebtn"> Subscribe <i class="fa fa-arrow-up-right"></i></a>
+            @using (Html.BeginUmbracoForm("Index", "NewsLetter", FormMethod.Post))
+            {
+            <div asp-validation-summary="All"></div>
+            <input asp-for="@newsLetterForm.Email" type="text" placeholder="username@domain.com">
+            <button type="submit" class="btn-theme subscribebtn"> Subscribe <i class="fa fa-arrow-up-right"></i></button>
+            }
             </div>
         </div>
     </section>

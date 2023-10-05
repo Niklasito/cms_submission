@@ -1,3 +1,7 @@
+using cms_submission.Contexts;
+using cms_submission.Services;
+using Serilog.Context;
+
 namespace cms_submission
 {
     public class Startup
@@ -34,7 +38,11 @@ namespace cms_submission
                 .AddWebsite()
                 .AddDeliveryApi()
                 .AddComposers()
-                .Build();
+            .Build();
+
+            services.AddUmbracoEFCoreContext<DataContext>("{UmbracoDatabase}", "{Microsoft.Data.Sqlite}");
+            services.AddScoped<ContactRequestService>();
+            services.AddScoped<NewsLetterService>();
         }
 
         /// <summary>
