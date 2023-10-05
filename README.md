@@ -1,5 +1,10 @@
 # cms_submission
+##Inlämningsuppgift i CMS Niklas Andersson.
 
+Jag har i denna inlämningsuppgift byggt ett CMS-system i Umbraco. Jag har utgått från en designmall och byggt upp min frontend med olika partials.
+Till min hjälp har jag också använt såväl compositions som document-types. För rendering av liknande objekt har jag i till viss del även använt blocklists.
+Det har varit ett roligt och lärorikt projekt där jag har kunnat applicera kunskap från tidigare kurser.
+Skulle man vilja logga in i backoffice så kan man använda följande uppgifter:
 
 login: niklas@domain.com
 password: BytMig123!
@@ -18,3 +23,7 @@ password: BytMig123!
 
 
 ![image](https://github.com/Niklasito/cms_submission/assets/110826266/74fcacc2-8f1c-4372-9e02-f71effeb43c6)
+
+
+![image](https://github.com/Niklasito/cms_submission/assets/110826266/856cf686-9975-47f9-a2a4-21e1434d2865)
+![image](https://github.com/Niklasito/cms_submission/assets/110826266/8525f3bf-45a8-4188-b018-10cc72184b3d)
